@@ -1,0 +1,8 @@
+Django==1.6.1
+Pillow==2.3.0
+argparse==1.2.1
+django-debug-toolbar==1.0.1
+psycopg2==2.5.2
+reportlab==2.7
+sqlparse==0.1.10
+wsgiref==0.1.2
