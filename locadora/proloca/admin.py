@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from Locadora.proloca.models import Filme, Cliente, Genero,Locacao,ContaReceber
+from locadora.proloca.models import Filme, Cliente, Genero,Locacao,ContaReceber
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'cpf', 'rg', 'oexp', 

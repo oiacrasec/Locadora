@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #caio
-    'Locadora.proloca',
+    'locadora.proloca',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'Locadora.urls'
+ROOT_URLCONF = 'locadora.urls'
 
-WSGI_APPLICATION = 'Locadora.wsgi.application'
+WSGI_APPLICATION = 'locadora.wsgi.application'
 
 
 # Database
