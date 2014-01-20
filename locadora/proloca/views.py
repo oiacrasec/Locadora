@@ -29,8 +29,8 @@ def registrar(request): #
             form.save()
             return HttpResponseRedirect("/logar")
         else:
-            return render(request, "site/registrar.html", {"form": form})
-    return render(request, "site/registrar.html", {"form": UserCreationForm() })
+            return render(request, "proloca/site/registrar.html", {"form": form})
+    return render(request, "proloca/site/registrar.html", {"form": UserCreationForm() })
  
  
 # pagina de login
@@ -41,8 +41,8 @@ def logar(request):
             login(request, form.get_user())
             return HttpResponseRedirect("/admin")
         else:
-            return render(request, "site/login.html", {"form": form})
-    return render(request, "site/login.html", {"form": AuthenticationForm()})
+            return render(request, "proloca/site/login.html", {"form": form})
+    return render(request, "proloca/site/login.html", {"form": AuthenticationForm()})
 
 @login_required
 def logout(request):
@@ -51,7 +51,7 @@ def logout(request):
 
 @login_required
 def acesso(request):
-    return render_to_response("site/acesso.html")
+    return render_to_response("proloca/site/acesso.html")
 
 def testePDF(request):
     response = HttpResponse(content_type='application/pdf')
