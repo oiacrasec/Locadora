@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+    	{% load staticfiles %}
+        <meta charset="utf-8">
+        <title>Locadora</title>
+        <link rel="stylesheet" href="{% static "proloca/css/estilo.css" %}" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+        <meta name="keywords" content="Locadora, Filmes, Seriados" />
+        <meta name="description" content="Proloca Locadora, um mundo inteiro de imaginações!" />
+    </head>
+    <body>
+    	<div id="main">
+        	<div class="primeiro">
+            	<div class="segundo">
+                	<div id="container">
+                    
+                    	<header id="topo">
+                        	<div id="logo">
+                        		<a href="{{ story.get_absolute_url }}/">
+                            		<img src="{% static "proloca/img/logo.png" %}" height="128px" width="128px" alt="Logo do site" >
+                            	</a>
+                            </div>
+                        	<div id="titulo">
+                                <span class="tit01">PRO<span class="white">LOCA LOCA</span>DORA</span><br />
+                                <span class="tit02">Um mundo inteiro de imaginações!</span>        
+                            </div>
+                            <div id="cxlogin">
+                            	<a href="{{ story.get_absolute_url }}/logar">
+                                	<span>ENTRAR</span>
+                                </a>
+                            </div>
+                        </header>
+                        
+                        <div id="conteudo">
+                        	<div id="esquerda">
+                            	<nav id="menu">
+                                	<ul>  
+                                		<li><a href="{{ story.get_absolute_url }}/">Home</a></li>                              	
+                                    	<li><a href="{{ story.get_absolute_url }}/acao">Ação</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/adulto">Adulto</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/comedia">Comédia</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/drama">Drama</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/ficcao">Ficção</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/infantil">Infantil</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/romance">Romance</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/suspense">Suspense</a></li>
+                                    	<li><a href="{{ story.get_absolute_url }}/terror">Terror</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div id="direita">
+                            	<article id="artigo">
+	                            	{% block content %}
+	      
+	      							
+	      							
+	      							{% endblock %}
+	      							
+	      							<div id="caixa-container">
+										{% for filme in object_list %}
+									    <div id="caixa">
+									        <span>{{ filme.nome }}</span>
+									        <img src="{{MEDIA_URL}}{{ filme.imagem }}" width="200" height="300" alt="filme {{ filme.nome }}" > 
+									    </div>
+									    {% endfor %}
+									</div>
+      							</article>
+                            </div>
+                        </div>
+                        
+                        <footer id="rodape">
+                        	<div id="endereco">
+                            	<p>104 Norte - Avenida JK Edifício Via Nobre Empresarial, <br /> Lote 28-A CEP: 77.066-014 Palmas - TO</p>
+                            </div>
+                            <div id="credito">
+                            	<p>Produzido por <span class="bold">::caioborges</span></p>
+                            </div>
+                        </footer>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

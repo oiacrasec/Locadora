@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+    	{% load staticfiles %}
+        <meta charset="utf-8">
+        <title>Locadora</title>
+        <link rel="stylesheet" href="{% static "proloca/css/estilo.css" %}" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+        <meta name="keywords" content="Locadora, Filmes, Seriados" />
+        <meta name="description" content="Proloca Locadora, um mundo inteiro de imaginações!" />
+    </head>
+    <body>
+    	<div id="main">
+        	<div class="primeiro">
+            	<div class="segundo">
+                	<div id="container">
+                    
+                    	<header id="topo">
+                        	<div id="logo">
+                        		<a href="{{ story.get_absolute_url }}/">
+                            		<img src="{% static "proloca/img/logo.png" %}" height="128px" width="128px" alt="Logo do site" >
+                            	</a>
+                            </div>
+                        	<div id="titulo">
+                                <span class="tit01">PRO<span class="white">LOCA LOCA</span>DORA</span><br />
+                                <span class="tit02">Um mundo inteiro de imaginações!</span>        
+                            </div>
+                        </header>
+                        
+                        <div id="conteudo">
+                            <div id="centro">
+                            	<article id="artigo">
+                                	<h1 class="punch">LOGIN</h1>
+                                	<div id="cont-cent-form">
+                                		<form method="POST">
+										    {% csrf_token %}
+										    {{ form.as_p }}
+										    <br />
+										    <input id="btlogar" type='submit' value='Logar' />
+										    <a href="{{ story.get_absolute_url }}/registrar">
+										    	<span class="cadastrar">cadastrar</span>
+										    </a>
+										</form>
+                                	</div>
+                                    
+                                </article>
+                            </div>
+                        </div>
+                        
+                        <footer id="rodape">
+                        	<div id="endereco">
+                            	<p>104 Norte - Avenida JK Edifício Via Nobre Empresarial, <br /> Lote 28-A CEP: 77.066-014 Palmas - TO</p>
+                            </div>
+                            <div id="credito">
+                            	<p>Produzido por <span class="bold">::caioborges</span></p>
+                            </div>
+                        </footer>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
