@@ -59,7 +59,11 @@ CONTA_STATUS_CHOICES = ((CONTA_STATUS_APAGAR, _('A Pagar')),(CONTA_STATUS_PAGO, 
     
 class Locacao(models.Model):
     cliente = models.ForeignKey(Cliente)
-    filme = models.ForeignKey(Filme)
+    # o Django fornece um modo simples de referenciar
+    # models sem ter que importalos explicitamente
+    # simplesmente referenciandoos pelo nome do model
+    # a sintaxe eh: nome_da_app.NomeDoModel
+    filme = models.ForeignKey('proloca.Filme')
     data_vencimento = models.DateField()
     data_pagamento = models.DateField(null=True, blank=True)
     valor = models.DecimalField(max_digits=15, decimal_places=2)
@@ -67,11 +71,17 @@ class Locacao(models.Model):
     status = models.CharField(max_length=1,default=CONTA_STATUS_APAGAR,choices=CONTA_STATUS_CHOICES,blank=True,)
     def __unicode__(self):
         return u'%s' % (self.cliente)
-    
-"""class ContaPagar(Locacao):
-    def save(self,*args,**kwargs):
-        self.operacao = CONTA_OPERACAO_DEBITO
-        super(ContaPagar,self).save(*args,**kwargs)"""
+
+# aspas triplas NAO sao comentarios. Quando utilizadas fora de uma
+# classe ou funcao, e nao sao definidas a nenhuma variavel, viram
+# documentacao do modulo(ou seja, do proprio arquivo)
+# se utilizada dentro de classes ou funcoes, viram sua documentacao
+# respectivamente
+# para criar comentarios no python utilize #
+# """class ContaPagar(Locacao):
+#     def save(self,*args,**kwargs):
+#         self.operacao = CONTA_OPERACAO_DEBITO
+#         super(ContaPagar,self).save(*args,**kwargs)"""
         
 class ContaReceber(Locacao):
     def save(self,*args,**kwargs):

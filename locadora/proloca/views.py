@@ -15,8 +15,11 @@ from django.http import HttpResponse
 from datetime import datetime
 #from django.core.context_processors import request
 #MEUS IMPORT
-from models import Filme
-from models import Locacao
+# use import relativo sempre que for possivel
+# isso torna seu codigo mais portavel e menos propenso
+# a erros
+from .models import Filme
+from .models import Locacao
 #def hello(request):
 #    return HttpResponse("Hello world")
 

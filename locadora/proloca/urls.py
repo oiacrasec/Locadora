@@ -3,8 +3,16 @@ from django.conf.urls import patterns, url
 
 from django.views.generic import ListView
 #MODELS
-from proloca.models import Filme
-import proloca.views
+# use import relativo sempre que for possivel
+# isso torna seu codigo mais portavel e menos propenso
+# a erros
+from .models import Filme
+
+# uma funcionalidade util do python
+# eh a possibilidade de renomear temporariamente as bibliotecas (modulos python)
+# com a palavra reservada "as". Pode ser util quando por exemplo
+# voce tem dois modulos diferentes com o mesmo nome
+from . import views as prolocaviews
 
 urlpatterns = patterns('',
 
@@ -19,13 +27,13 @@ urlpatterns = patterns('',
     url(r'^suspense/', ListView.as_view(queryset=Filme.objects.filter(genero__genero__exact='Suspense'),template_name='proloca/site/suspense.html'),),
     url(r'^terror/', ListView.as_view(queryset=Filme.objects.filter(genero__genero__exact='Terror'),template_name='proloca/site/terror.html'),),
 
-    url(r'^logar/$',proloca.views.logar),
-    url(r'^registrar/$',proloca.views.registrar),
-    url(r'^sair/$',proloca.views.logout),
-    url(r'^acesso/$',proloca.views.acesso),
-    url(r'^pdf/$',proloca.views.testePDF),
-    url(r'^relatorio1/$',proloca.views.relatorioFilmeAlugado),
-    url(r'^relatorio2/$',proloca.views.relatorioFilmeDisponivel),
-    url(r'^comprovante/(?P<id_comp>\d+)/$',proloca.views.emitirComprovante),
+    url(r'^logar/$',prolocaviews.logar),
+    url(r'^registrar/$',prolocaviews.registrar),
+    url(r'^sair/$',prolocaviews.logout),
+    url(r'^acesso/$',prolocaviews.acesso),
+    url(r'^pdf/$',prolocaviews.testePDF),
+    url(r'^relatorio1/$',prolocaviews.relatorioFilmeAlugado),
+    url(r'^relatorio2/$',prolocaviews.relatorioFilmeDisponivel),
+    url(r'^comprovante/(?P<id_comp>\d+)/$',prolocaviews.emitirComprovante),
 
 )
