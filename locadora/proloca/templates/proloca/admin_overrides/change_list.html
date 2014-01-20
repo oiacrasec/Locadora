@@ -1,0 +1,15 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools-items %}
+    {{ block.super }}
+    <li>
+      <a href="{% url 'relatorio_alugados' %}" class="addlink">
+        Baixar relatório alugados
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'relatorio_disponiveis' %}" class="addlink">
+        Baixar relatório disponiveis
+      </a>
+    </li>
+{% endblock object-tools-items %}

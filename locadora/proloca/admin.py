@@ -26,17 +26,19 @@ class FilmeAdmin(admin.ModelAdmin):
                     'quantidade','cod_barra','imagem',)
     search_fields = ['nome']
     list_filter = ['genero',]
+    change_list_template = 'proloca/admin_overrides/change_list.html'
+
 
 class LocacaoAdmin(admin.ModelAdmin):
     list_display = ('cliente','filme','data_vencimento','data_pagamento','operacao','status','valor',)
     list_filter = ('data_vencimento','status','operacao','filme','cliente',)
     search_fields = ['cliente__nome', ]
 
-"""class LocacaoContaPagarAdmin(admin.ModelAdmin):
-    list_display = ('data_vencimento','valor','status','filme','cliente')
-    list_filter = ('data_vencimento','status','filme','cliente',)
-    exclude = ['operacao',]
-    search_fields = ['cliente__nome', ]"""
+# """class LocacaoContaPagarAdmin(admin.ModelAdmin):
+#     list_display = ('data_vencimento','valor','status','filme','cliente')
+#     list_filter = ('data_vencimento','status','filme','cliente',)
+#     exclude = ['operacao',]
+#     search_fields = ['cliente__nome', ]"""
 
 class LocacaoContaReceberAdmin(admin.ModelAdmin):
     list_display = ('data_vencimento','status','filme','cliente',)

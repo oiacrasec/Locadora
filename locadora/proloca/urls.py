@@ -32,8 +32,8 @@ urlpatterns = patterns('',
     url(r'^sair/$',prolocaviews.logout),
     url(r'^acesso/$',prolocaviews.acesso),
     url(r'^pdf/$',prolocaviews.testePDF),
-    url(r'^relatorio1/$',prolocaviews.relatorioFilmeAlugado),
-    url(r'^relatorio2/$',prolocaviews.relatorioFilmeDisponivel),
+    url(r'^relatorio1/$',prolocaviews.relatorioFilmeAlugado, name='relatorio_alugados'),
+    url(r'^relatorio2/$',prolocaviews.relatorioFilmeDisponivel, name='relatorio_disponiveis'),
     url(r'^comprovante/(?P<id_comp>\d+)/$',prolocaviews.emitirComprovante),
 
 )

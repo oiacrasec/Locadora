@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 import os
+from decimal import Decimal
 
 # Create your models here.
     
@@ -69,8 +70,35 @@ class Locacao(models.Model):
     valor = models.DecimalField(max_digits=15, decimal_places=2)
     operacao = models.CharField(max_length=1,default=CONTA_OPERACAO_DEBITO,choices=CONTA_OPERACAO_CHOICES,blank=True,)
     status = models.CharField(max_length=1,default=CONTA_STATUS_APAGAR,choices=CONTA_STATUS_CHOICES,blank=True,)
+
     def __unicode__(self):
         return u'%s' % (self.cliente)
+
+    def save(self,*args,**kwargs):
+        # cuidado com operacoes com numeros de ponto flutuante
+        #
+        print('1.1 - 1.0')
+        teste = 1.1 - 1.0
+        print('Voce espera que o resultado de 0.1, certo?\n errado, o resultado eh', teste)
+        # use o modulo o Decimal para fazer contas e evitar imprevistos
+        # um exemplo de como se usa Decimal
+
+        algum_valor = Decimal(self.valor) * Decimal(3)
+
+
+        # No calculo, eh utilizado calculo de numeros decimais em detrimento a utilizacao de
+        # numeros de ponto flutuante (float, double), devido aos problemas de precisao ja conhecidos,
+        # como explicado nos links:
+        #
+        # http://www.ibm.com/developerworks/library/j-jtp0114/
+        # http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+        # http://docs.python.org/2/tutorial/floatingpoint.html
+        # http://docs.python.org/2/library/decimal.html#module-decimal
+        # http://pymotw.com/2/decimal/
+
+
+        super(Locacao,self).save(*args,**kwargs)
+
 
 # aspas triplas NAO sao comentarios. Quando utilizadas fora de uma
 # classe ou funcao, e nao sao definidas a nenhuma variavel, viram
