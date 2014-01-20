@@ -1,0 +1,20 @@
+locacao dia 15/01/14
+entrega dia 18/01/14
+
+calculo sera:
+
+Pagamento = dias_aluguel * valor 
+
+SE Data_Entrega > SomaLocacaDia
+
+Multa = 
+ somaLocacaoDia = dia_locacao + dias_aluguel (15/01 + 1 = 16/01)
+ SubtraiAtraso = dia_entrega - somaLocacaoDia (18/01-16/01 = 2)
+ resultado=0;
+ SE (Pago==false)
+  resultado = (SubtraiAtraso*Multa)+(DiasAluguel*Valor)
+ ELSE (Pago==true)
+ resultado = SubtraiAtraso*Multa
+
+
+	
